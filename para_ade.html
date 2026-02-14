@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Para mi hermosa esposa ❤️</title>
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  text-align:center;
+  font-family: Arial;
+  background: linear-gradient(45deg,#ff9ecf,#ffcce6);
+  overflow-x:hidden;
+}
+
+h1{
+  margin-top:80px;
+  font-size:35px;
+  color:white;
+  text-shadow:2px 2px 5px #ff4da6;
+}
+
+button{
+  padding:15px 30px;
+  font-size:20px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  margin:20px;
+  transition:0.3s;
+}
+
+#si{
+  background-color:#ff4da6;
+  color:white;
+}
+
+#si:hover{
+  transform:scale(1.1);
+}
+
+#no{
+  background-color:white;
+  position:absolute;
+}
+
+#mensaje{
+  font-size:22px;
+  color:white;
+  margin-top:30px;
+  display:none;
+  padding:20px;
+}
+
+/* Gatitos cayendo */
+.gatito{
+  position:fixed;
+  top:-50px;
+  animation:caer 6s linear forwards;
+  font-size:30px;
+  pointer-events:none;
+}
+
+@keyframes caer{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(110vh);}
+}
+
+/* Corazones flotando */
+.corazon{
+  position:absolute;
+  animation:flotar 5s linear infinite;
+}
+
+@keyframes flotar{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
+}
+
+/* Confeti */
+.confeti{
+  position:fixed;
+  width:10px;
+  height:10px;
+  animation:caerConfeti 3s linear forwards;
+}
+
+@keyframes caerConfeti{
+  0%{transform:translateY(-10vh) rotate(0deg);}
+  100%{transform:translateY(110vh) rotate(720deg);}
+}
+
+/* Pantalla final */
+#final{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  color:white;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  font-size:40px;
+  animation:fadeIn 3s ease-in-out forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>¿Quieres ser mi Valentine por siempre? 💕</h1>
+
+<button id="si" onclick="aceptar()">SÍ MI AMOR 😍</button>
+<button id="no" onmouseover="mover()">NO 😢</button>
+
+<div id="mensaje">
+Ade ❤️ <br><br>
+
+Tal vez hoy no puedo darte un regalo físico…<br>
+pero quiero que sepas que mi amor por ti no depende del dinero,<br>
+depende de lo que siento cada día cuando te veo,<br>
+cuando me apoyas, cuando caminas conmigo incluso en momentos difíciles.<br><br>
+
+Hoy estoy pasando por una etapa complicada,<br>
+pero estoy trabajando fuerte para salir adelante.<br>
+Y si algo tengo claro es que quiero salir adelante CONTIGO.<br><br>
+
+Gracias por no soltarme.<br>
+Gracias por creer en mí.<br>
+Gracias por ser mi esposa y mi equipo.<br><br>
+
+Te prometo que vendrán tiempos mejores,<br>
+y cuando lleguen, también celebraremos en grande.<br><br>
+
+Te amo infinito 💖
+</div>
+
+<div id="final">
+✨ Feliz 14 de Febrero 2026 ✨<br><br>
+De tu esposo que te ama<br>
+Gracias por el regalo mas hermoso que me diste en mi vida 💖
+</div>
+
+<audio id="musica" src="aeroesmith.mp3"></audio>
+
+<script>
+
+function aceptar(){
+  document.getElementById("mensaje").style.display="block";
+
+  let musica = document.getElementById("musica");
+musica.currentTime = 55;
+musica.volume = 1.0;
+musica.play().catch(error => {
+  console.log("Autoplay bloqueado");
+});
+
+
+  lanzarGatitos();
+  lanzarCorazones();
+  lanzarConfeti();
+
+  setTimeout(function(){
+    document.getElementById("final").style.display="flex";
+  }, 9000);
+}
+
+function mover(){
+  var x = Math.random()*window.innerWidth;
+  var y = Math.random()*window.innerHeight;
+  document.getElementById("no").style.left = x + "px";
+  document.getElementById("no").style.top = y + "px";
+}
+
+function lanzarGatitos(){
+  for(let i=0;i<20;i++){
+    let gatito=document.createElement("div");
+    gatito.innerHTML="🐱💖";
+    gatito.className="gatito";
+    gatito.style.left=Math.random()*100+"vw";
+    gatito.style.animationDuration=(3+Math.random()*4)+"s";
+    document.body.appendChild(gatito);
+  }
+}
+
+function lanzarCorazones(){
+  for(let i=0;i<20;i++){
+    let corazon=document.createElement("div");
+    corazon.innerHTML="💖";
+    corazon.className="corazon";
+    corazon.style.left=Math.random()*100+"vw";
+    corazon.style.fontSize=(20+Math.random()*30)+"px";
+    corazon.style.animationDuration=(3+Math.random()*5)+"s";
+    document.body.appendChild(corazon);
+  }
+}
+
+function lanzarConfeti(){
+  for(let i=0;i<80;i++){
+    let confeti=document.createElement("div");
+    confeti.className="confeti";
+    confeti.style.left=Math.random()*100+"vw";
+    confeti.style.backgroundColor=
+      ["#ff4da6","#ffffff","#ff66cc","#ff99dd","#ff1a75"]
+      [Math.floor(Math.random()*5)];
+    confeti.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(confeti);
+  }
+}
+
+</script>
+
+</body>
+</html>
